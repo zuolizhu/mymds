@@ -14,4 +14,16 @@ step 2: Component rendered with default state values.
 step 3: Change state based on event.
 step 4: Component re-rendered using new state values.
 step 5: Start again at step 3.
- 
+
+### Try to avoid this.setState usage like below
+---
+```
+this.setState({
+    count: 0
+});
+this.setState({
+    count: this.state.count + 1
+});
+```
+This won't reset count and add 1. The result won't be `count : 1`.
+Becasuse calling this.setState is *asynchronous*. The count won't change on the very next line.

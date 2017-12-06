@@ -48,7 +48,6 @@ Below are some basic commands:
    1. stop running ghost `ghost stop`
    2. `ghost start development`
    3. refresh web browser page, and go to admin panel, **Design** tab, find the theme just created, and click **activate**
-
 4. Start working on theme development now.
 
 ---
@@ -73,4 +72,43 @@ Below are some basic commands:
 ```
 
 
+
+---
+
+### Bind blog title and description in `index.hbs`
+
+As simple as 
+
+```html
+<header>
+    <h1>{{ @blog.title }}</h1>
+    <h2>{{ @blog.description }}</h2>
+</header>
+```
+
+### Bind blog posts
+
+**No space between `{{#foreach posts}}` and `{{/foreach}}`**
+
+```html
+<header>
+    <h1>{{ @blog.title }}</h1>
+    <h2>{{ @blog.description }}</h2>
+</header>
+
+<main>
+    <!-- For each one of the posts, display the title -->
+    {{#foreach posts}}
+        <h1>{{title}}</h1>
+    {{/foreach}}
+</main>
+```
+
+change the number of posts displayed in the page, simple change the number in package.json
+
+```json
+"config": {
+        "post_per_page": 6
+    }
+```
 

@@ -89,7 +89,7 @@ with Bulma header boilerplate:
 
 ---
 
-## Styling posts card
+## Turing boring text posts list into fancy posts card
 
 One of the idea to display the posts list is to put them into card.
 
@@ -164,3 +164,22 @@ To do that,
 
 ---
 
+## Add style to post card
+
+1. Give the <main> tag a class `<main class="container">` in **`index.hbs`**.
+
+2. And playing around with the bulma columns.
+
+   ```html
+   <main class="container">
+       <div class="columns is-multiline">
+           {{#foreach posts}}
+               <div class="column is-half is-centered">
+                   {{> post_card}}
+               </div>    
+           {{/foreach}}
+       </div>
+   </main>
+   ```
+
+   ​

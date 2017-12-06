@@ -124,7 +124,7 @@ To do that,
         {{/if}} --}}
 
         <!-- Display the tile of the post. -->
-        <h1 class="title is-4">{{title}}</h1>
+        <a class="title is-4" href="{{url}}">{{title}}</a>
 
         <!-- Content of each card. -->
         <div class="content">
@@ -240,3 +240,38 @@ And remember to add this component into **`default.hbs`** by adding `{{> footer}
 </body>
 ```
 
+
+
+---
+
+## Styling Pagination Block
+
+Create a new file named `pagination.hbs` inside **partials** folder.
+
+This time we are going to overwrite the default pagination.
+
+```html
+<nav class="pagination is-medium" role="navigation" aria-label="pagination">
+    {{#if prev}}
+        <a href="{{page_url prev}}" class="pagination-next">Newer Posts</a>
+    {{/if}}
+    
+    <span class="pagination-link is-current">Page {{page}} of {{pages}}</span>
+
+    {{#if next}}
+        <a href="{{page_url next}}" class="pagination-previous">Older Posts</a>
+    {{/if}}
+</nav>
+```
+
+The **space** is important in `{{page_url prev}}` and `{{page_url next}}`.
+
+Then back to `index.hbs`, put `{{pagination}}` component into a container
+
+```html
+<div class="container">
+    {{pagination}}
+</div>
+```
+
+to keep the margin constant at the same page.

@@ -98,7 +98,7 @@ To do that,
 1. create `post_card.hbs` inside **partials** folder.
 
 ```html
-<article>
+<article class="card">
     <!-- Card image -->
     <!-- Decide if need a place holder image for card. -->
     {{#if feature_image}}

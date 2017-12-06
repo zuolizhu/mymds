@@ -4,7 +4,7 @@ date: 2017-11-28T18:30:01-05:00
 draft: true
 ---
 
-Ghost is one of my favorite blog system. This tutorial is written for my future referencing.
+Ghost is one of my favorite blog system. This tutorial is talked about setup ghost and build own theme from scratch. This tutorial is written for my future referencing as well.
 
 ---
 
@@ -35,7 +35,41 @@ Below are some basic commands:
 
 ---
 
-###For additional theme development, make sure check the box Public API in ghost admin-panel, `Labs`section.
+###For additional theme development, make sure check the box Public API in ghost admin-panel, **Labs** section.
+
+---
+
+##To start make my own theme
+
+1. Make new folder with a theme name(whatever) inside`Ghost\content\themes`
+  (_Make sure inside right folder. Not in *__Ghost\current\content\theme__*_)
+2. Create three important files : `index.hbs` `post.hbs` and [`package.json`](#package.json)
+3. Activate theme
+   1. stop running ghost `ghost stop`
+   2. `ghost start development`
+   3. refresh web browser page, and go to **Design** tab, find the theme just created, and click **activate**
+
+
+---
+###package.json
+
+```json
+{
+  "name": "whatever-theme",
+  "description": "A simple theme for ghost personal blog",
+  "version:" "0.01",
+  "engines": {
+    "ghost": ">=1.0.0"
+  },
+  "author": {
+    "name": "Zuoli Zhu",
+    "email": "hello@zuolizhu.com"
+  },
+  "config": {
+    "posts_per_page": 6
+  }
+}
+```
 
 
 

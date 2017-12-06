@@ -75,6 +75,8 @@ Below are some basic commands:
 
 ---
 
+### index.hbs
+
 ### Bind blog title and description in `index.hbs`
 
 As simple as 
@@ -112,3 +114,45 @@ change the number of posts displayed in the page, simple change the number in pa
     }
 ```
 
+### pagination block (<the buttons to switch pages>)
+
+outside of `<main/>`
+
+simply add `{{pagination}}`
+
+
+
+### Allow user to access the posts
+
+```html
+<h1><a href="{{url}}">{{title}}</a></h1>
+```
+
+
+
+## At this point, when click posts link, the page will be blank.
+
+It's time to add some code inside `post.hbs`!
+
+---
+
+### post.hbs
+
+#### To display content after user click the posts link in main page
+
+```html
+{{#post}}
+    <article>
+        <header>
+            <h1>{{title}}</h1>
+        </header>
+        <section>
+            {{content}}
+        </section>
+    </article>
+{{/post}}
+```
+
+
+
+## At this point, we have setup a fresh, non style blog.

@@ -4,11 +4,11 @@ date: 2017-12-05T20:23:05-05:00
 draft: true
 ---
 
-This is the 2nd part of ghost blog tutorial. Last tutorial I setup the environment and bound the very basic content within the `index.hbs` and `post.hbs`. This part will focus on styling.
+This is the 2nd part of ghost blog tutorial. Last tutorial I setup the environment and bound the very basic content within the `index.hbs` and `post.hbs`. This tutorial will talk about how to add CSS framework into project.
 
 ---
 
-## Add Bulma CSS
+# Add Bulma CSS framework
 
 ### Before add it, wrap all the content into a default container
 

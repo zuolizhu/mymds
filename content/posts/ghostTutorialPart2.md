@@ -57,4 +57,31 @@ This is the 2nd part of ghost blog tutorial. Last tutorial I setup the environme
 
 ---
 
-### Adding CSS Framework Bulma
+## Adding CSS Framework Bulma
+
+Underneath title `<title>{{meta_title}}</title>`, add `bumla CDN`
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{meta_title}}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.1/css/bulma.css">
+    {{ghost_head}}
+</head>
+<body>
+    {{{body}}}
+    {{ghost_foot}}
+</body>
+</html>
+```
+
+Then refresh the page. You will see something different.
+
+This also works for `Bootstrap` and `Materializecss`.
+
+---
+

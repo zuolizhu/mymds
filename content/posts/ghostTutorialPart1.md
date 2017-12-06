@@ -1,5 +1,5 @@
 ---
-title: "ghostTutorial"
+title: "ghostTutorialPart1"
 date: 2017-11-28T18:30:01-05:00
 draft: true
 ---

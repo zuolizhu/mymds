@@ -17,7 +17,7 @@ Basic environment requirements:
   - To install it, run `npm install ghost-cli -g`
 
 ---
-#Installation
+# Installation
 
 After environment setup, create a folder `mkdir heyGhost` then `cd heyGhost`. This folder will be the local workspace for ghost. 
 
@@ -35,11 +35,11 @@ Below are some basic commands:
 
 ---
 
-###For additional theme development, make sure check the box Public API in ghost admin-panel, **Labs** section.
+### For additional theme development, make sure check the box Public API in ghost admin-panel, **Labs** section.
 
 ---
 
-##To start make my own theme
+## To start make my own theme
 
 1. Make new folder with a theme name(whatever) inside`Ghost\content\themes`
   (_Make sure inside right folder. Not in *__Ghost\current\content\theme__*_)
@@ -47,27 +47,28 @@ Below are some basic commands:
 3. Activate theme
    1. stop running ghost `ghost stop`
    2. `ghost start development`
-   3. refresh web browser page, and go to **Design** tab, find the theme just created, and click **activate**
+   3. refresh web browser page, and go to admin panel, **Design** tab, find the theme just created, and click **activate**
 
+4. Start working on theme development now.
 
 ---
-###package.json
+### package.json
 
 ```json
 {
-  "name": "whatever-theme",
-  "description": "A simple theme for ghost personal blog",
-  "version:" "0.01",
-  "engines": {
-    "ghost": ">=1.0.0"
-  },
-  "author": {
-    "name": "Zuoli Zhu",
-    "email": "hello@zuolizhu.com"
-  },
-  "config": {
-    "posts_per_page": 6
-  }
+    "name": "whatever-theme",
+    "description": "A simple theme for ghost blog",
+    "version": "0.0.1",
+    "engines": {
+        "ghost": ">=1.0.0"
+    },
+    "author": {
+        "name": "Zuoli Zhu",
+        "email": "zuolizhu5960x@gmail.com"
+    },
+    "config": {
+        "post_per_page": 6
+    }
 }
 ```
 

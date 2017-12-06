@@ -182,4 +182,61 @@ To do that,
    </main>
    ```
 
-   ​
+---
+## A footer is important
+
+Create `footer.hbs` inside **partials** folder.
+
+```html
+<footer class="footer is-centered">
+    <div class="container">
+        <div class="columns">
+            <!-- Display rencent posts list at left column. -->
+            <div class="column">
+                <!-- Fetech recent posts. -->
+                {{#get "posts" limit="3" as |recent|}}
+                <section class="recent-posts">
+                    <h3>Recent Posts</h3>
+                    <ul>
+                        {{#foreach recent}}
+                        <li>
+                            <a href="{{url}}">{{title}}</a>
+                        </li>
+                        {{/foreach}}
+                    </ul>
+                </section>
+                {{/get}}
+            </div>
+
+            <!-- Display tags list at right column. -->
+            <div class="column">
+                <!-- Fetech tags. -->
+                {{#get "tags" limit="10" as |tag|}}
+                <section>
+                    <h3>Tags</h3>
+                    <ul>
+                        {{#foreach tags}}
+                        <li>
+                            <a href="{{url}}" class="tag">{{name}}</a>
+                        </li>
+                        {{/foreach}}
+                    </ul>
+                </section>
+                {{/get}}
+            </div>
+        </div>
+    </div>
+</footer>
+```
+
+And remember to add this component into **`default.hbs`** by adding `{{> footer}}`.
+
+```html
+<body>
+    {{> header}}
+    {{{body}}}
+    {{> footer}}
+    {{ghost_foot}}
+</body>
+```
+

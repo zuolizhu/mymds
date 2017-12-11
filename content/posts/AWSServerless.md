@@ -22,3 +22,4 @@ Before get started, make sure **IntelliJ IDEA Ultimate version** installed. Comm
 2. Select **Spring Initializr**, make sure **Project SDK** is Java 8, then leave other as default, then next.
 3. Set up **Group** and **Artifact**.
 4. For the section **Core**, check the box `DevTools` and `Lombok`. For the **Web**, check `Web`. For **SQL**, select `JPA` and `H2`. For **Ops**, choose `Actuator` and `Actuator Docs`.
+5. Then all should be good to go and hit Finish.

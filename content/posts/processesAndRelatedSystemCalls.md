@@ -190,3 +190,68 @@ Some how like **Task Manager** of windows system
   ```
 
   ​
+
+---
+
+#### The exec Famlily of system Calls
+
+- Used __in conjunction__ with fork to create processes that execute **different** code
+- Child executes an appropriate exec call
+  - execl: used when command line arguments are known at compile time and can be passed as a list
+  - execv: used to pass command line arguments as an array (similar to argv[])
+- Note:
+  -  `execlp` has a variable number of arguments
+    - NULL indicates the end of the list
+  - `exec` functions only return if an error has occurred
+    - The return value is -1, and errno is set to indicate the error
+    - There is **no return** value unless an error has occurred
+
+
+
+Code example:
+
+```c
+/* This program will fork a child process to 
+	(1) run the cmd "grep test file.txt" (Using execlp)
+	(2) execute the ls program with -l as an argument (Using execvp)
+*/
+
+// As before, add a little code on fork example
+#include <stdio.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <unistd.h>
+#include <string.h>
+int main(void) {
+  pid_t child;
+  int cstatus; /* Exit status of child. */
+  pid_t c; /* Pid of child to be returned by wait. */
+  
+  /* Run other program code */
+  if ((child = fork()) == 0) {
+    
+    /* Child process. To begin with, it prints its pid. */
+    printf("Child: PID of Child = %ld\n", (long) getpid());
+    
+    /* Child will now execute the grep command. */
+    execlp("grep", "grep", "test", "infile.txt", NULL);
+    
+    /* If the child process reaches this point, then */
+    /* execlp must have failed. */
+    fprintf(stderr, "Child process could not do execlp.\n");
+    exit(1);
+  }
+  else { 
+    /* Parent process. */
+    if (child == (pid_t)(-1)) {
+    	fprintf(stderr, "Fork failed.\n"); exit(1);
+  }
+  else {
+    c = wait(&cstatus); /* Wait for child to complete. */
+    printf("Parent: Child %ld exited with status = %d\n",(long) c, cstatus);
+    }
+  }
+  return 0;
+} /* End of main. */
+```
+

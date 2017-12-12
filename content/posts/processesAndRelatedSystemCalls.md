@@ -236,6 +236,13 @@ int main(void) {
     /* Child will now execute the grep command. */
     execlp("grep", "grep", "test", "infile.txt", NULL);
     
+    /* Or execute the sh command */
+    /* execlp("/bin/sh", "sh", "-c", command, NULL); */
+    
+    /* If child will run other program in same folder */
+    /* execlp("parg", "parg", "Another", "Example", "for", "fork-wait-exec", NULL); */
+    
+    
     /* If the child process reaches this point, then */
     /* execlp must have failed. */
     fprintf(stderr, "Child process could not do execlp.\n");

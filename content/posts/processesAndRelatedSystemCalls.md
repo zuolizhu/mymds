@@ -130,3 +130,63 @@ Some how like **Task Manager** of windows system
 
   - The output produced by the parent and child processes may be **interleaved** because of **Waiting for Processes**, so keep track of the children. 
   - When a child terminates, it’s **still associated** to its parent (child process entry is not freed up, it remains until **parent terminated** or calls **wait**), and it becomes a **zombie process** (kill **does not work** for zombie processes)
+
+
+
+- In other words, **zombie process** is a process that has **terminated before** its parent had a chance to wait for it
+
+  ```c
+  if ((cid) = fork() == 0) {
+    // Code for child
+  } else {
+    // Code for parent
+    c = wait(&status);
+  }
+  ```
+
+  Above code might have the problem that, child may exit before parent reaches the wait call
+
+  ​
+
+---
+
+#### Waiting for a Process
+
+- Sometimes a parent needs to wait for a child to complete
+
+  - for example: the shell
+    - Each shell command (excepted `cd`) is excuted by a child process of shell
+
+  Lets add a little code to fork example with `wait`.
+
+  ```c
+  #include <stdio.h>
+  #include <sys/types.h>
+  #include <unistd.h>
+
+  int main(void) {
+    pid_t child;
+    /* Add variables for wait */
+    int cstatus; // Exit status of child
+    pid_t c; // Child's pid to be returned by the wait system call
+    
+    if ((child = fork()) == 0) {
+      printf("Child: PID of child = %ld\n", (long)getpid());
+    } else {
+      if (child == (pid_t)(-1)) {
+        fprintf(stderr, "Fork failed.\n");
+        exit(1);
+      } else {
+        /* call wait */
+        c = wait(&cstatus);
+        printf("Parent: PID of child = %ld\n", (long) child);
+        printf("Parent: PID of parent = %ld\n", (long)getpid());
+        /* show child pid and status */
+        printf("Parent: Child %ld exited with status = %d\n", (long)c, cstatus);
+      }
+    }
+    return 0;
+  }
+  ```
+
+  ​

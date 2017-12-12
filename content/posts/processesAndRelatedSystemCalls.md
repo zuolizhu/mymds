@@ -93,4 +93,37 @@ Some how like **Task Manager** of windows system
 
   ---
 
+  #### System call **fork**
+
+- There are two independent processes exist after the fork.
+
+- Each process has its own meory, data and variables.
+
+- The child **inherits it's parent's privileges and resources**
+
+- The hild **competes** with its parent for CPU time
+
+  ```c
+  #include <stdio.h>
+  #include <sys/types.h>
+  #include <unistd.h>
+
+  /* The program prints its own id or if it’s a child process, prints the id of its parent process as well */
+  int main(void) {
+    pid_t child;
+    if ((child = fork()) == 0) {
+      printf("Child: PID of child = %ld\n", (long)getpid());
+    } else {
+      if (child == (pid_t)(-1)) {
+        fprintf(stderr, "Fork failed.\n");
+        exit(1);
+      } else {
+        printf("Parent: PID of child = %ld\n", (long) child);
+        printf("Parent: PID of parent = %ld\n", (long)getpid());
+      }
+    }
+    return 0;
+  }
+  ```
+
   ​

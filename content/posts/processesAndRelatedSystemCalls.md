@@ -126,4 +126,7 @@ Some how like **Task Manager** of windows system
   }
   ```
 
-  ​
+  Note: 
+
+  - The output produced by the parent and child processes may be **interleaved** because of **Waiting for Processes**, so keep track of the children. 
+  - When a child terminates, it’s **still associated** to its parent (child process entry is not freed up, it remains until **parent terminated** or calls **wait**), and it becomes a **zombie process** (kill **does not work** for zombie processes)

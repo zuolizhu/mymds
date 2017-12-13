@@ -98,3 +98,19 @@ Bitwise Operators
   - Setting bit j
     - `x = 1 << j;`
 
+
+
+---
+
+#### File Descriptors
+
+- Type: `int`
+
+- File descriptors 0, 1 and 2 correspond to `stdin`, `stdout` and `stderr`.
+
+- Use the symbolic names of these devices (`STDIN_FILENO`, `STDOUT_FILENO` and `STDERR_FILENO`) in programs
+
+  Note: File descriptors are different from file pointers (`FILE *`) used in `<stdio.h>`
+
+
+

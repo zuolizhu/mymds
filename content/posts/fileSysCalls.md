@@ -18,7 +18,6 @@ When read/write from/to a file
     - User processes request kernel services through **system calls**
 
 
-
 ---
 
 #### System calls
@@ -55,7 +54,6 @@ Some system programs
 - Programming language support (compiler, debuggers)
 - Program loading and execution (loaders, linkers)
 - Communication (ftp, browsers, ssh)
-
 
 
 ---
@@ -113,6 +111,44 @@ Some system programs
 
 
 
+  - There is a more complex form of `open`:
+
+
+      - Prototype: `int open(const char *pathname, int flags, mode_t mode);`
+
+      - `pathname`: pathname for a file.
+
+      - `flags`: one of the following access modes.
+
+
+          - O_RDONLY
+          - O_WRONLY
+          - O_RDWR
+          - file creation flags and file status flags can be bitwise-or'd in flags
+
+      - `mode`: specifies the file mode bits be applied when a new file is created.
+
+
+          - must be supplied when O_CREAT is specified in flags else is ignored.
+
+      - Returns a file descriptor or -1 if an error occurred.
+
+
+          - The file offset is set to the beginning of the file.
+
+      - The call to open checks whether the specified access flags satisfy the file permissions.
+
+        ```c
+        int fd;
+        mode_t fmode = S_IRWXU | S_IRGRP | S_IROTH;
+        if ((fd = open("file", O_WRONLY, fmode)) == -1) {
+          fprintf(stderr, "Error in open\n"); exit(1);
+        }
+        ```
+
+        ​
+
+
 
 
 - System call `creat`
@@ -143,6 +179,8 @@ Some system programs
 
 
 
+
+
 - System call `read`
 
   - Prototype: `ssize_t read (int fd, void *buf, size_t n);`
@@ -165,6 +203,8 @@ Some system programs
     fprintf(stderr, "Error in read.\n"); eixt(1);
   }
   ```
+
+  ​
 
   ​
 
@@ -193,6 +233,8 @@ Some system programs
     fprintf(stderr, "Write error.\n"); exit(1);
   }
   ```
+
+
 
 
 
@@ -235,6 +277,8 @@ Some system programs
 
 
 
+
+
 - System call `unlink` and `remove`
   - Prototypes: 
     - `int unlink (const char *pathname); `
@@ -245,7 +289,6 @@ Some system programs
   - Both eliminate the file specified by `pathname`.
   - <Originally, only unlink was in the list of system calls, ANSI C standard added remove>
   - Returns 0 if successful and -1 otherwise and errno is set appropriately.
-
 
 
 ---
@@ -280,3 +323,4 @@ Note:
 
 - The value of `errno` is not reset when a system call is successful.
 - The value of `errno` must be used **only** when a system call returns a *value indicating error*.
+

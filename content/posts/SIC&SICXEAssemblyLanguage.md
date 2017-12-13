@@ -215,29 +215,86 @@ SIC Programming Example
 
 SIC vs SIC/XE
 
+
+
+Data movement operations
+
 ```assembly
 #SIC Version:
-LDA 	FIVE
-STA 	ALPHA
-LDCH 	CHARZ
-STCH 	C1
-.
-.
-ALPHA 	RESW 	1 		# Uninitialized word.
-FIVE 	WORD 	5 		# Word initialized to 5.
-CHARZ 	BYTE 	C’Z’ 	# Byte initialized to ’Z’.
-C1 		RESB 	1 		# Uninitialized byte.
+		LDA 	FIVE	# Load constant 5 into register A
+		STA 	ALPHA	# Store in ALPHA
+		LDCH 	CHARZ	# Load character 'z' into register A
+		STCH 	C1		# Store in character variable C1
+		.
+		.
+		.
+ALPHA 	RESW 	1 		# One-Word variable
+FIVE 	WORD 	5 		# One-Word constant
+CHARZ 	BYTE 	C’Z’ 	# One-Byte constant
+C1 		RESB 	1 		# One-Byte variable
 ```
 
 ```assembly
 #SIC/XE Version:
-		LDA #5 			# Immediate operand.
-		STA ALPHA
-		LDA #90 		# ASCII code for ’Z’.
-		STCH C1
-.
-.
-ALPHA 	RESW 1 			# Uninitialized word.
-C1 		RESB 1 			# Uninitialized byte.
+		LDA #5 			# Load value 5 into register A
+		STA ALPHA		# Store in ALPHA
+		LDA #90 		# Load ASCII code for 'z' into register A
+		STCH C1			# Store in character variable C1
+		.
+		.
+		.
+ALPHA 	RESW 1 			# One-Word variable
+C1 		RESB 1 			# One-Byte variable
 ```
+
+
+
+Arithmetic operations
+
+```assembly
+#SIC Version:
+		LDA		ALHPA	# Load ALPHA into register A
+		ADD		INCR	# Add the value of INCR
+		SUB		ONE		# Subtract 1
+		STA		BETA	# Store in BETA
+		LDA		GAMMA	# Load GAMMA into register A
+		ADD		INCR	# Add the value of INCR
+		SUB		ONE		# Subtract 1
+		STA		DELTA	# Store in DELTA
+		.
+		.
+		.
+ONE		WORD	1		# One-Word constant
+.						# One-Word variable
+ALPHA	RESW	1
+BETA	RESW	1
+GAMMA	RESW	1
+DELTA	RESW	1
+INCR	RESW	1
+```
+
+```assembly
+#SIC/XE Version:
+		LDS		INCR	# Load value of INCR into register S
+		LDA		ALPHA	# Load ALPHA into register A
+		ADDR	S,A		# Add the value of INCR
+		SUB		#1		# Subtract 1
+		STA		BETA	# Store in BETA
+		LDA		GAMMA	# Load GAMMA into register A
+		ADDR	S,A		# Add the value of INCR
+		SUB		#1		# Subtract 1
+		STA		DELTA	# Store in DELTA
+		.
+		.
+		.
+.						# One-Word variable
+ALPHA	RESW	1
+BETA	RESW	1
+GAMMA	RESW	1
+DELTA	RESW	1
+INCR	RESW	1
+
+```
+
+
 

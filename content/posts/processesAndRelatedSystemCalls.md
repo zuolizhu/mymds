@@ -46,13 +46,13 @@ A program in excution
 
 ---
 
-Now let talk about some useful shell commands related to process
+Some useful shell commands related to process
 
-Some how like **Task Manager** of windows system
+(like **Task Manager** of windows system)
 
-- ps : returns the list of processes that are running
+- `ps` : returns the list of processes that are running
 
-- kill : end one or more processes
+- `kill` : end one or more processes
 
   - `kill -s`singnal can be numebr or signal name
   - `kill -l`display a list of signal names

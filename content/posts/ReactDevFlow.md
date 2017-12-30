@@ -13,7 +13,7 @@ The modern front end development has specific steps to do:
 
 
 
-This is note will write some details for React development workflow.
+This note will write some details for React development workflow.
 
 ---
 
@@ -27,16 +27,7 @@ Tools:
 
 ---
 
-A "primitive" development environment setup:
-
-- Local Web Server `live-server` (will be replaced with `parcel`)
-  - `npm install -g live-server` or `yarn global add live-server` to install it
-  - `live-server public` to run the local server with folder name `public`
-- Babel compiler:
-
-`yarn global add babel-cli` or `npm install -g babel-cli`
-
----
+#### Below does not use Webpack
 
 #### Adding React to HTML Using CDN:
 
@@ -102,11 +93,34 @@ A "primitive" development environment setup:
   ReactDOM.render(template, appRoot);
   ```
 
-- Run `babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch` to compile the `app.js` in side `src` folder. 
+- Install `babel-cli` and `live-server` locally
 
-  - The compiled code will be automatically generated into `public/scripts/app.js`.
-  - Be careful with the flag **--presets=env,react**, `--preset` without `s` will cause syntax error.
+  - `yarn add live-server babel-cli` 
 
-- Run `live-server public` in terminal and open the browser to check the result.
+- Write scripts for `live-server` and `babel-cli` in `package.json`
 
+  - ```json
+    {
+      "name": "",
+      "version": "1.0.0",
+      "main": "index.js",
+      "author": "",
+      "license": "MIT",
+      "scripts": {
+        "serve": "live-server public/",
+        "build": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch"
+      },
+      "dependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-preset-env": "^1.6.0",
+        "babel-preset-react": "^6.24.1",
+        "live-server": "^1.2.0"
+      }
+    }
+    ```
+
+- Run `yarn run build` and `yarn run serve` to check to result.
+
+
+---
 

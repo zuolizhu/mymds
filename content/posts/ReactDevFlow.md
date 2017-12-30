@@ -101,26 +101,43 @@ Tools:
 
   - ```json
     {
-      "name": "",
+      "name": "project-name",
       "version": "1.0.0",
       "main": "index.js",
-      "author": "",
       "license": "MIT",
       "scripts": {
         "serve": "live-server public/",
-        "build": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch"
+        "build-babel": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch"
       },
       "dependencies": {
         "babel-cli": "^6.26.0",
-        "babel-preset-env": "^1.6.0",
+        "babel-preset-env": "^1.6.1",
         "babel-preset-react": "^6.24.1",
-        "live-server": "^1.2.0"
+        "live-server": "^1.2.0",
+        "webpack": "^3.10.0"
       }
     }
     ```
 
-- Run `yarn run build` and `yarn run serve` to check to result.
+- Run `yarn run build-babel` and `yarn run serve` to check to result.
 
 
 ---
+
+#### Complex part comes here
+
+`yarn add webpack` install Webpack locally
+
+Then write the `webpack.config.js`
+
+```javascript
+const path = require('path');
+module.exports = {
+    entry: './src/app.js',
+    output: {
+        path: path.join(__dirname, 'public'),
+        filename: 'bundle.js'
+    }
+};
+```
 

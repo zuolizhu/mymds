@@ -8,7 +8,7 @@ ES6 import and export statement allow to break up an application from one big fi
 
 ---
 
-#### Import
+## Import
 
 1. Setup a super simple `webpack.config.js` for bundling.
 
@@ -84,12 +84,15 @@ ES6 import and export statement allow to break up an application from one big fi
 
 ---
 
-#### Export
+## Export
 
 There are two types of exports:
 
 1. default export (only one)
 2. named export (can be many)
+
+
+
 
 
 
@@ -128,6 +131,9 @@ There are two types of exports:
   Note: the import is a little bit different than before.
 
   The name inside { }, `square`, `add`, and `canDrink` **must match the name of the original function name.**
+
+
+
 
 
 

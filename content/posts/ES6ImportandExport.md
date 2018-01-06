@@ -81,7 +81,6 @@ ES6 import and export statement allow to break up an application from one big fi
 
 
 
-
 ---
 
 ## Export
@@ -180,3 +179,98 @@ There are two types of exports:
   ```
 
   is same as the `substract`.
+
+
+---
+
+#### Import npm modules
+
+3 steps: install -> import -> use it
+
+1. `yarn add validator`. Check the `package.json ` to make sure the module has been added.
+
+2. Read the documentation of `validator` to know what to import. At the time wrote of this post, it is 
+
+   ```javascript
+   import validator from 'validator';
+   ```
+
+3. To use it:
+
+   ```javascript
+   console.log(validator.isEmail('test@zzl.com'));
+   ```
+
+   and check out the console in browser.
+
+
+---
+
+#### Import `react` and `react-dom`
+
+1. `yarn add react react-dom`
+
+2. To import react into project, check the [link](https://reactjs.org/docs/react-api.html) for reference. Recently it is 
+
+   ```javascript
+   import React from 'react';
+   import ReactDOM from 'react-dom';
+   ```
+
+   At this stage, the react jsx won't work without babel compiler.
+
+   ​
+
+3. Setting up Babel with Webpack
+
+   1. `yarn add babel-core babel-loader`
+
+      ​	`babel-core` is a little similar to `babel-cli`. Instead of running babel at command line, babel-core module allows to run babel from `Webpack`. `babel-loader` is a Webpack plugin.
+
+   2. setup **module** in `webpack.config.js`
+
+      ```javascript
+      const path = require('path');
+
+      module.exports = {
+          entry: './src/app.js',
+          output: {
+              path: path.join(__dirname, 'public'),
+              filename: 'bundle.js'
+          },
+          module: {
+              rules: [{
+                  loader: 'babel-loader',
+                  test: /\.js$/,
+                  exclude: /node_modules/
+              }]
+          }
+      };
+      ```
+
+      `/\.js$/` check the files end with `.js`.
+
+      `/node_modules/` ignore any files inside **node_modules** folder.
+
+   3. create a separate configuration file `.babelrc` in the *root of the project* to **setup the presets for babel**.
+
+      ```json
+      {
+          "presets": [
+              "env", 
+              "react"
+          ]
+      }
+      ```
+
+   4. Now inside `app.js`, using JSX
+
+      ```javascript
+      import React from 'react';
+      import ReactDOM from 'react-dom';
+      const template = <p>JSX from Webpack!</p>;
+      ReactDOM.render(template, document.getElementById('app'));
+      ```
+
+   5. Now re run the build, and check the result in browser. 
+

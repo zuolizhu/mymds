@@ -145,7 +145,7 @@ There are two types of exports:
   export {subtract as default};
   ```
 
-  or 
+  or
 
   ```javascript
   const subtract = (x, y) => x - y;
@@ -274,3 +274,30 @@ There are two types of exports:
 
    5. Now re run the build, and check the result in browser. 
 
+
+
+
+---
+
+Extra notes:
+
+In react, for exporting **class based function** as default, simply add `export default` in front is totally fine.
+
+Example:
+
+```javascript
+export default class AddOption extends React.Component {
+  // code ...
+}
+```
+
+**But, for stateless functional component :**
+
+```javascript
+const subtract = (x, y) => x - y;
+export default subtract;
+```
+
+This is the best way.
+
+Otherwise, the name of the function will get lost in debug tools.

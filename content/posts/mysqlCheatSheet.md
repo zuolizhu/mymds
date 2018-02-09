@@ -24,6 +24,8 @@ mysql-ctl stop
 
 `show databases;` list existing databases
 
+---
+
 Common interacting with Database:
 
 1. Start MySQL CLI: `mysql-ctl cli;`
@@ -50,6 +52,6 @@ Common interacting with Database:
    );
    ```
 
- 	8. `SHOW TABLES;` shows current tables in current database.
-	9. `SHOW COLUMNS FROM tablename;` displays a nice detail information of  a table, or alternatively, `DESC tablename;`.
-	10. To delete a table: `DROP TABLE tablename;`.
+8. `SHOW TABLES;` shows current tables in current database.
+9. `SHOW COLUMNS FROM tablename;` displays a nice detail information of  a table, or alternatively, `DESC tablename;`
+10. To delete a table: `DROP TABLE tablename;`
